@@ -7,6 +7,11 @@ const SimulationResultSchema = new mongoose.Schema(
     onTimeDeliveries: { type: Number, required: true },
     lateDeliveries: { type: Number, required: true },
     totalFuelCost: { type: Number, required: true },
+    fuelCostByTraffic: {
+      Low: { type: Number, default: 0 },
+      Medium: { type: Number, default: 0 },
+      High: { type: Number, default: 0 },
+    },
   },
   { timestamps: true }
 );

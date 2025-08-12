@@ -1,17 +1,39 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-// Set the app element for accessibility
 ReactModal.setAppElement("#root");
 
 const CustomModal = ({ isOpen, onRequestClose, children }) => {
+  const customStyles = {
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.75)",
+      zIndex: 1000,
+    },
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      border: "none",
+      background: "#fff",
+      overflow: "auto",
+      WebkitOverflowScrolling: "touch",
+      borderRadius: "8px",
+      outline: "none",
+      padding: "24px",
+      maxWidth: "500px",
+      width: "90%",
+    },
+  };
+
   return (
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
+      style={customStyles}
       contentLabel="Action Modal"
-      className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md m-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-50"
     >
       {children}
     </ReactModal>

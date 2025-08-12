@@ -93,7 +93,7 @@ const DriversPage = () => {
         <h1 className="text-2xl font-bold">Manage Drivers</h1>
         <button
           onClick={openModalForCreate}
-          className="px-4 py-2 font-semibold text-white bg-green-600 rounded-md hover:bg-green-700"
+          className="px-4 py-2 font-semibold text-white bg-green-600 rounded-md hover:bg-green-700 hover:cursor-pointer"
         >
           + Add Driver
         </button>
@@ -117,13 +117,13 @@ const DriversPage = () => {
                 <td className="px-6 py-4 space-x-2">
                   <button
                     onClick={() => openModalForEdit(driver)}
-                    className="text-blue-600 hover:underline"
+                    className="text-blue-600 hover:underline hover:cursor-pointer"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(driver._id)}
-                    className="text-red-600 hover:underline"
+                    className="text-red-600 hover:underline hover:cursor-pointer"
                   >
                     Delete
                   </button>
@@ -180,13 +180,13 @@ const DriversPage = () => {
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 bg-gray-300 rounded"
+              className="px-4 py-2 bg-gray-300 rounded hover:cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-white bg-blue-600 rounded"
+              className="px-4 py-2 text-white bg-blue-600 rounded hover:cursor-pointer"
             >
               Save
             </button>
