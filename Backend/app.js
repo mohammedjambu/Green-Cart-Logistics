@@ -17,7 +17,24 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// Define allowed origins
+const allowedOrigins = [
+  'http://localhost:5173', // local frontend
+  'https://green-cart-logistics-sigma.vercel.app' // live Vercel URL
+];
+
+// Setup CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
