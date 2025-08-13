@@ -3,9 +3,7 @@ const router = express.Router();
 const Route = require("../models/route");
 const { protect } = require("../middleware/authMiddleware");
 
-// @desc    Get all routes
-// @route   GET /api/routes
-// @access  Private
+// Get all routes
 router.get("/", protect, async (req, res) => {
   try {
     const routes = await Route.find({});
@@ -15,9 +13,7 @@ router.get("/", protect, async (req, res) => {
   }
 });
 
-// @desc    Create a new route
-// @route   POST /api/routes
-// @access  Private
+// Create a new route
 router.post("/", protect, async (req, res) => {
   try {
     const { route_id, distance_km, traffic_level, base_time_min } = req.body;
@@ -36,9 +32,7 @@ router.post("/", protect, async (req, res) => {
   }
 });
 
-// @desc    Update a route by its MongoDB _id
-// @route   PUT /api/routes/:id
-// @access  Private
+// Update a route
 router.put("/:id", protect, async (req, res) => {
   try {
     const { route_id, distance_km, traffic_level, base_time_min } = req.body;
@@ -60,9 +54,7 @@ router.put("/:id", protect, async (req, res) => {
   }
 });
 
-// @desc    Delete a route by its MongoDB _id
-// @route   DELETE /api/routes/:id
-// @access  Private
+// Delete a route
 router.delete("/:id", protect, async (req, res) => {
   try {
     const route = await Route.findById(req.params.id);

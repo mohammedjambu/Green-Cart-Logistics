@@ -13,7 +13,7 @@ const Navbar = () => {
   const navLinkStyles = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
-      color: isActive ? "#10B981" : "white", // Emerald green for active
+      color: isActive ? "#10B981" : "white",
     };
   };
 
@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold text-white">GreenCart Admin</h1>
 
-        {/* Desktop Menu (Visible on medium screens and up) */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6">
           <NavLink
             to="/dashboard"
@@ -60,7 +60,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Hamburger Menu Button (Visible on small screens) */}
+        {/* Hamburger Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <svg
@@ -81,7 +81,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (Dropdown) */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden mt-4">
           <NavLink

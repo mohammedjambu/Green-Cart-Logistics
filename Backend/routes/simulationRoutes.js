@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { protect } = require("../middleware/authMiddleware");
 
-// Import all necessary Mongoose models
 const Order = require("../models/order");
 const Driver = require("../models/driver");
 const SimulationResult = require("../models/simulationResult");

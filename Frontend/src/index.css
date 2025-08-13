@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: #f9fafb; /* A very light gray (bg-gray-50) */
+  background-color: #f9fafb;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

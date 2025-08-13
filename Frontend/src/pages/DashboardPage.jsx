@@ -12,7 +12,6 @@ import {
   ArcElement,
 } from "chart.js";
 
-// Register all necessary components for Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,18 +23,14 @@ ChartJS.register(
 );
 
 const DashboardPage = () => {
-  // State for the latest KPI data
   const [kpiData, setKpiData] = useState(null);
 
-  // State for the simulation form inputs
   const [numDrivers, setNumDrivers] = useState(10);
   const [maxHours, setMaxHours] = useState(8);
 
-  // State for loading and error handling
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Function to run the simulation
   const runSimulation = async () => {
     setLoading(true);
     setError("");
@@ -46,7 +41,6 @@ const DashboardPage = () => {
       });
       setKpiData(data);
     } catch (err) {
-      // Display a user-friendly error from the backend if available
       setError(
         err.response?.data?.message ||
           "Failed to run simulation. Please try again."
@@ -56,13 +50,12 @@ const DashboardPage = () => {
     setLoading(false);
   };
 
-  // On initial page load, fetch the latest simulation result from history
   useEffect(() => {
     const fetchLatestSim = async () => {
       try {
         const { data } = await api.get("/api/simulate/history");
         if (data && data.length > 0) {
-          setKpiData(data[0]); // Display the most recent simulation result
+          setKpiData(data[0]);
         }
       } catch (err) {
         console.error("Could not fetch simulation history", err);
@@ -71,7 +64,6 @@ const DashboardPage = () => {
     fetchLatestSim();
   }, []);
 
-  // Data configuration for the "On-Time vs Late" Bar Chart
   const deliveryChartData = {
     labels: ["Deliveries"],
     datasets: [
@@ -92,7 +84,6 @@ const DashboardPage = () => {
     ],
   };
 
-  // Data configuration for the "Fuel Cost Breakdown" Doughnut Chart
   const fuelChartData = {
     labels: ["Low Traffic", "Medium Traffic", "High Traffic"],
     datasets: [
@@ -104,9 +95,9 @@ const DashboardPage = () => {
           kpiData?.fuelCostByTraffic?.High || 0,
         ],
         backgroundColor: [
-          "rgba(75, 192, 192, 0.8)", // Teal for Low
-          "rgba(54, 162, 235, 0.8)", // Blue for Medium
-          "rgba(255, 159, 64, 0.8)", // Orange for High
+          "rgba(75, 192, 192, 0.8)",
+          "rgba(54, 162, 235, 0.8)",
+          "rgba(255, 159, 64, 0.8)",
         ],
         borderColor: ["#FFFFFF", "#FFFFFF", "#FFFFFF"],
         borderWidth: 2,

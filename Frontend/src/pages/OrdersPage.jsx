@@ -4,7 +4,7 @@ import CustomModal from "../components/Modal";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
-  const [routes, setRoutes] = useState([]); // To populate the dropdown
+  const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,7 +72,7 @@ const OrdersPage = () => {
       } else {
         await api.post("/api/orders", orderData);
       }
-      fetchData(); // Refresh both orders and routes
+      fetchData();
       closeModal();
     } catch (err) {
       console.error("Failed to save order", err);
@@ -83,7 +83,7 @@ const OrdersPage = () => {
     if (window.confirm("Are you sure you want to delete this order?")) {
       try {
         await api.delete(`/api/orders/${id}`);
-        fetchData(); // Refresh the list
+        fetchData();
       } catch (err) {
         console.error("Failed to delete order", err);
       }

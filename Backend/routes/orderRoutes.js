@@ -3,9 +3,7 @@ const router = express.Router();
 const Order = require("../models/order");
 const { protect } = require("../middleware/authMiddleware");
 
-// @desc    Get all orders, populating their route info
-// @route   GET /api/orders
-// @access  Private
+// Get all orders,
 router.get("/", protect, async (req, res) => {
   try {
     const orders = await Order.find({}).populate("route");
@@ -15,9 +13,7 @@ router.get("/", protect, async (req, res) => {
   }
 });
 
-// @desc    Create a new order
-// @route   POST /api/orders
-// @access  Private
+// Create a new order
 router.post("/", protect, async (req, res) => {
   try {
     const { order_id, value_rs, route, delivery_time } = req.body;
@@ -25,12 +21,11 @@ router.post("/", protect, async (req, res) => {
     const newOrder = new Order({
       order_id,
       value_rs,
-      route, // This should be the MongoDB _id of the Route document
+      route,
       delivery_time,
     });
 
     const createdOrder = await newOrder.save();
-    // Populate the response to send back the full route info
     await createdOrder.populate("route");
     res.status(201).json(createdOrder);
   } catch (error) {
@@ -38,9 +33,7 @@ router.post("/", protect, async (req, res) => {
   }
 });
 
-// @desc    Update an order by its MongoDB _id
-// @route   PUT /api/orders/:id
-// @access  Private
+// Update an order
 router.put("/:id", protect, async (req, res) => {
   try {
     const { order_id, value_rs, route, delivery_time } = req.body;
@@ -63,9 +56,7 @@ router.put("/:id", protect, async (req, res) => {
   }
 });
 
-// @desc    Delete an order by its MongoDB _id
-// @route   DELETE /api/orders/:id
-// @access  Private
+// Delete an order
 router.delete("/:id", protect, async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);

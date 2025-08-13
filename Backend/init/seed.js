@@ -50,7 +50,6 @@ const importData = async () => {
       fs.createReadStream(path.join(__dirname, "./drivers.csv"))
         .pipe(csv())
         .on("data", (row) => {
-          // Convert past_week_hours from string "6|8|..." to array [6, 8, ...]
           row.past_week_hours = row.past_week_hours.split("|").map(Number);
           drivers.push(row);
         })
@@ -62,7 +61,7 @@ const importData = async () => {
         .on("error", reject);
     });
 
-    // SEED ORDERS AND LINK THEM TO ROUTES 
+    // SEED ORDERS AND LINK THEM TO ROUTES
     const orders = [];
     const dbRoutes = await Route.find();
     const routeMap = new Map(

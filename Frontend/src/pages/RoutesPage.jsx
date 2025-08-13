@@ -68,7 +68,7 @@ const RoutesPage = () => {
       } else {
         await api.post("/api/routes", routeData);
       }
-      fetchRoutes(); // Refresh the list after saving
+      fetchRoutes();
       closeModal();
     } catch (err) {
       console.error("Failed to save route", err);
@@ -79,7 +79,7 @@ const RoutesPage = () => {
     if (window.confirm("Are you sure you want to delete this route?")) {
       try {
         await api.delete(`/api/routes/${id}`);
-        fetchRoutes(); // Refresh the list after deleting
+        fetchRoutes();
       } catch (err) {
         console.error("Failed to delete route", err);
       }
