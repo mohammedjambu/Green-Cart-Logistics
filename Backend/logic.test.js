@@ -20,7 +20,7 @@ const calculateHighValueBonus = (orderValue, isLate) => {
   return 0;
 };
 
-// used Jest to test functions
+// Used Jest to test functions
 describe("GreenCart Business Logic Rules", () => {
   // Fuel Cost
   test("Fuel Cost: should calculate base cost for Low traffic", () => {
