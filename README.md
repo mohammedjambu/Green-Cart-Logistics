@@ -17,7 +17,7 @@ The tool allows managers to:
 ## 2. Live Deployment Links
 
 *   **Live Frontend (Vercel):** [https://green-cart-logistics-sigma.vercel.app/]
-*   **Live Backend (Render):** `[https://green-cart-logistics-1ao7.onrender.com]`
+*   **Live Backend (Render):** [https://green-cart-logistics-1ao7.onrender.com]
 
 ---
 
